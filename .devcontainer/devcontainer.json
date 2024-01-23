@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.202.5/containers/cpp
+{
+	"name": "cube-jammy",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+
+	"runArgs": [
+		"--init",
+		"--privileged",
+		"--security-opt",
+		"seccomp=unconfined",
+		"--net=host",
+		"--ipc=host"
+	],
+	"containerEnv": {
+		"DISPLAY": "${env:DISPLAY}"
+	},
+	// Mount bash history
+	"mounts": [
+		"source=projectname-bashhistory,target=/commandhistory,type=volume",
+		"source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached"
+	],
+	"workspaceMount": "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind",
+	"workspaceFolder": "/cube",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cmake-tools",
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-extension-pack"
+			]
+		},
+		"settings": {
+			"terminal.integrated.shell.linux": "/bin/bash",
+			"terminal.integrated.shellArgs.linux": [
+				"-l"
+			]
+		}
+	}
+}
