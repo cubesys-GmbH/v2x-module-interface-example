@@ -55,7 +55,7 @@ CubeEvk::CubeEvk(boost::asio::io_service& io)
 void CubeEvk::handle_packet_received(const boost::system::error_code &ec, size_t bytes)
 {
     GossipMessage gossipMessage;
-    gossipMessage.ParseFromArray(received_data.data(), received_data.size());
+    gossipMessage.ParseFromArray(received_data.data(), bytes);
 
     switch (gossipMessage.kind_case()) 
     {
