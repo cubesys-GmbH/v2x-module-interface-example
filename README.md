@@ -1,5 +1,18 @@
+# Configure
+Set your EVK IPs in sampe_rx.cpp and sample_tx.cpp
+
+# Build
 ```
-g++ sample_rx.cpp nfiniity_cube_radio.pb.cc -lprotobuf -o bin/sample-rx
-g++ sample_tx.cpp nfiniity_cube_radio.pb.cc -lprotobuf -o bin/sample-tx
+mkdir build && cd build
+cmake ..
+make
 ```
 
+# Run
+```
+# first EVK
+./sample-rx
+
+# second EVK
+./sample-tx Hi
+```
