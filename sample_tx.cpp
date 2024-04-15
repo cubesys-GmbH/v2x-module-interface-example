@@ -10,7 +10,7 @@ using namespace std;
 
 namespace
 {
-    string cube_ip = "127.0.0.1";
+    string cube_ip = "192.168.111.72";
 }
 
 class CubeEvk
@@ -52,6 +52,7 @@ void CubeEvk::send_data(string payload)
     
     std::string serializedTransmission;
     command.SerializeToString(&serializedTransmission);
+    cout << boost::asio::buffer(serializedTransmission).size() << endl;
     tx_socket.send(boost::asio::buffer(serializedTransmission));
 }
 
@@ -60,7 +61,7 @@ int main(int argc, char* argv[])
     boost::asio::io_service io;
     CubeEvk cube(io); 
 
-    string data = "";
+    string data = ">>";     // we need minimum data of 2 bytes
     for(int idx = 1; idx < argc; ++idx)
         data += string(argv[idx]) + " ";
 
