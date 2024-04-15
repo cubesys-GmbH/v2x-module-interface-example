@@ -52,7 +52,6 @@ void CubeEvk::send_data(string payload)
     
     std::string serializedTransmission;
     command.SerializeToString(&serializedTransmission);
-    cout << boost::asio::buffer(serializedTransmission).size() << endl;
     tx_socket.send(boost::asio::buffer(serializedTransmission));
 }
 
