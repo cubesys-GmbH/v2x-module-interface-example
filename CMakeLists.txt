@@ -20,5 +20,9 @@ target_sources(sample-tx PRIVATE sample_tx.cpp)
 target_include_directories(sample-rx PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 target_include_directories(sample-tx PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
-target_link_libraries(sample-rx PUBLIC protobuf::libprotobuf)
-target_link_libraries(sample-tx PUBLIC protobuf::libprotobuf)
+target_link_libraries(sample-rx PUBLIC protobuf::libprotobuf Boost::headers)
+target_link_libraries(sample-tx PUBLIC protobuf::libprotobuf Boost::headers)
+
+get_target_property(OUT sample-rx LINK_LIBRARIES)
+message(STATUS ${OUT})
+
