@@ -10,7 +10,7 @@ using namespace std;
 
 namespace
 {
-    string cube_ip = "192.168.111.72";
+    string cube_ip = "127.0.0.1";
 }
 
 class CubeEvk
