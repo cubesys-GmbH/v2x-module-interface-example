@@ -16,6 +16,10 @@ protobuf_generate(TARGET sample-tx PROTOS nfiniity_cube_radio.proto LANGUAGE cpp
 protobuf_generate(TARGET sample-rx PROTOS nfiniity_cube_radio.proto LANGUAGE python)
 protobuf_generate(TARGET sample-tx PROTOS nfiniity_cube_radio.proto LANGUAGE python)
 
+file(CREATE_LINK ${CMAKE_CURRENT_SOURCE_DIR}/sample-rx.py ${CMAKE_CURRENT_BINARY_DIR}/sample-rx.py SYMBOLIC)
+file(CREATE_LINK ${CMAKE_CURRENT_SOURCE_DIR}/sample-tx.py ${CMAKE_CURRENT_BINARY_DIR}/sample-tx.py SYMBOLIC)
+
+
 target_sources(sample-rx PRIVATE sample-rx.cpp)
 target_sources(sample-tx PRIVATE sample-tx.cpp)
 
