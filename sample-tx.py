@@ -6,8 +6,8 @@ from nfiniity_cube_radio_pb2 import *
 
 class CubeEvk:
     def __init__(self, cube_ip):
-        self.cube_port_tx = 33210
         self.cube_ip = cube_ip
+        self.cube_port_tx = 33210
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     def send_data(self, data):
