@@ -29,14 +29,26 @@ class CubeEvk:
     def run_reception(self):
         while True:
             data, address = self.sock_rx.recvfrom(1024)
-            print("received")
+            gossip = GossipMessage()
+            gossip.ParseFromString(data)
+
+            match gossip.WhichOneof("kind"):
+                case "cbr":
+                    # got CBR; use this for your DCC
+                    # cbr.busy and cbr.total
+                    cbr = gossip.cbr
+                case "linklayer_rx":
+                    # got a packet
+                    print(f"Payload: {gossip.linklayer_rx.payload.decode()}")
+                    print(f"Power: {gossip.linklayer_rx.power_cbm / 10} dbm")
+
 
     def close(self):
         self.sock_tx.close()
         self.sock_rx.close()
 
 def main():
-    cube_ip = "192.168.178.131"
+    cube_ip = "127.0.0.1"
     cube = CubeEvk(cube_ip)
 
     try:
