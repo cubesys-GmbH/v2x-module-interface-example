@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/vscode/devcontainers/base:jammy
+FROM mcr.microsoft.com/vscode/devcontainers/base:noble
+RUN userdel -r ubuntu
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get -y install --no-install-recommends \
     nano \
@@ -10,7 +11,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get -y instal
     clang-format \
     cppcheck \
     iputils-ping \
-    libgeographic-dev \
     libgps-dev \
     libcrypto++-dev \
     libprotobuf-dev \
@@ -20,4 +20,5 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get -y instal
     libpoco-dev \
     libssl-dev \
     openssl \
-    uncrustify
+    uncrustify \
+    python3-protobuf

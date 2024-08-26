@@ -1,5 +1,5 @@
 # Configure
-Set your EVK IPs in sampe_rx.cpp and sample_tx.cpp
+Set your EVK IPs in sample files.
 
 # Build
 ```
@@ -8,11 +8,20 @@ cmake ..
 make
 ```
 
-# Run
+# Run the C++ Examples
 ```
 # first EVK
 ./sample-rx
 
 # second EVK
 ./sample-tx Hi
+```
+
+# Run the Python Examples
+```
+# first EVK
+python3 sample-rx.py
+
+# second EVK
+python3 sample-tx.py
 ```
